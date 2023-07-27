@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+/* da Trains controller File utlizzo la classe contenuta */
+use App\Http\Controllers\Guest\TrainsController as TrainsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [TrainsController::class, 'index']);

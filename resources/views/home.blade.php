@@ -16,17 +16,50 @@
 </head>
 
 <body>
-
-    <main class="bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-
-                </div>
-            </div>
-
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">AZIENDA</th>
+                        <th scope="col">STAZIONE DI PARTENZA</th>
+                        <th scope="col">STAZIONE DI ARRIVO</th>
+                        <th scope="col">DATA PARTENZA</th>
+                        <th scope="col">ORARIO DI PARTENZA</th>
+                        <th scope="col">ORARIO DI ARRIVO</th>
+                        <th scope="col">CODICE TRENO</th>
+                        <th scope="col">NUMERO CARROZZE</th>
+                        <th scope="col">IN ORARIO</th>
+                        <th scope="col">CANCELLATO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($trains as $train)
+                        <tr>
+                            <th scope="row">{{ $train->azienda }}</th>
+                            <td>{{ $train->stazione_di_partenza }}</td>
+                            <td>{{ $train->stazione_di_arrivo }}</td>
+                            <td>{{ $train->data }}</td>
+                            <td>{{ $train->orario_di_partenza }}</td>
+                            <td>{{ $train->orario_di_arrivo }}</td>
+                            <td>{{ $train->codice_treno }}</td>
+                            <td>{{ $train->numero_carrozze }}</td>
+                            @if ($train->in_orario === 0)
+                                <td>In Ritardo</td>
+                            @else
+                                <td>Puntuale</td>
+                            @endif
+                            @if ($train->cancellato === 0)
+                                <td>NO</td>
+                            @else
+                                <td>SI</td>
+                            @endif
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-    </main>
+    </div>
 
 </body>
 
