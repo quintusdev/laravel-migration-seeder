@@ -8,11 +8,26 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     * Creo le colonne della tabella
+     *
      * @return void
      */
     public function up()
     {
+        /* Creazione colonne tabella Trains */
+        Schema::create('trains', function (Blueprint $table) {
+            $table->id();
+            $table->string('azienda');
+            $table->string('stazione_di_partenza');
+            $table->string('stazione_di_arrivo');
+            $table->time('orario_di_partenza');
+            $table->time('orario_di_arrivo');
+            $table->smallInteger('codice_treno');
+            $table->tinyInteger('numero_carrozze');
+            $table->boolean('in_orario');
+            $table->boolean('cancellato');
+            $table->date('data');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -22,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('trains');
     }
 };
