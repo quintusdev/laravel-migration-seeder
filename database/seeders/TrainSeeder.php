@@ -17,6 +17,7 @@ class TrainSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        /* INSERIMENTO DATI DB CON FAKER */
         for ($i = 0; $i < 10; $i++) {
             $train = new Train();
             $train->azienda = $faker->word();
